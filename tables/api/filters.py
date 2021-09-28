@@ -14,10 +14,10 @@ class TableFilterClass:
 		objects = Table.objects
 		try:
 			filter_list = []
-			for val in self.kwargs.values():
-				filter_list.append(val[0])
-
 			filter_dict = {}
+
+			for val in self.kwargs.values():
+				filter_list.append(*val)
 
 			if filter_list[1] == 'eq':
 				filter_dict[filter_list[0]] = filter_list[2]

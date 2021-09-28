@@ -23,10 +23,12 @@ $(function () {
 
 		if (data['next']) {
 			$('#nextPage a').attr('data-url', data['next']);
-		}
+		} else
+			$('#nextPage a').removeAttr('data-url');
 		if (data['previous']) {
 			$('#prevPage a').attr('data-url', data['previous']);
-		}
+		} else
+			$('#prevPage a').removeAttr('data-url');
 
 		$('#table-datas').html(row);
 	}
@@ -59,10 +61,10 @@ $(function () {
 		TYPE = document.getElementById('condition').value;
 		VALUE = document.getElementById('filter-val').value;
 
-		//TODO сделать метод сортироки по фильтру и в нем вызвать метод для заполнения
 		let url = `api/filter-table/?column=${COLUMN}&condition=${TYPE}&value=${VALUE}`
 		console.log(url)
 		$.get(url).done(function (data) {
+			console.log(data)
 			generateTable(data)
 		});
 	});
